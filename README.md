@@ -1,7 +1,9 @@
 # Deep Neural Network for classification of H&E-stained Colorectal Polyps - Exploring the Pipeline of Computer-Assisted Histopathology
 
-Fine tuned on top of the pretreined model by [Ciga et al. (2022)](https://github.com/ozanciga/self-supervised-histopathology).
-Read the paper here:
+Abstract:
+Colorectal cancer is one of the most prevalent malignancies globally and recently introduced digital pathology enables the use of machine learning as an aid for fast diagnostics. This project aimed to develop a deep neural network model to specifically identify and differentiate dysplasia in the epithelium of colorectal polyps and was posed as a binary classification problem. The available dataset consisted of 80 whole slide images of different H\&E-stained polyp sections, which were parted info smaller patches, annotated by a pathologist. The best performing model was a pretrained ResNet-18 by [Ciga et al. (2022)](https://github.com/ozanciga/self-supervised-histopathology), utilising a weighted sampler, weight decay and augmentation during fine tuning. Reaching an area under precision-recall curve of 0.9989 and 97.41\% accuracy on previously unseen data, the model's performance was determined to slightly underperform compared to the task's intra-observer variability and be in alignment with the inter-observer variability. Read the paper here:
+
+You can download the final model's state dict with the **.pt** extension here.
 
 Starter code:
 
@@ -12,7 +14,7 @@ import torchvision
 MODEL_PATH = 'final_model1.pt'
 NUM_CLASSES = 1
 
-# Get gpu, mps or cpu device for training.
+# Get gpu, mps or cpu device
 device = (
     "cuda"
     if torch.cuda.is_available()
@@ -34,14 +36,13 @@ model.eval()
 logits = model(imgs)
 ```
 
-### Citation
-If you find this work useful or
+### Reference
+If you find this work useful, please use below citation.
 
 ```
-@mastersthesis{Brunzell2024,
+@mastersthesis{stinabr2024,
   author = {Stina Brunzell},
-  title = {Deep Neural Network for classification of H&E-stained Colorectal Polyps 
-            - Exploring the Pipeline of Computer-Assisted Histopathology},
+  title = {Deep Neural Network for Classification of H\&E-stained Colorectal Polyps - Exploring the Pipeline of Computer-Assisted Histopathology},
   school = {Uppsala University},
   year = {2024},
   url = {}
