@@ -12,7 +12,7 @@ import torch
 import torchvision
 
 MODEL_PATH = 'final_model.pt'
-NUM_CLASSES = 1
+NUM_OUTPUTS = 1
 
 # Get gpu, mps or cpu device
 device = (
@@ -23,9 +23,9 @@ device = (
     else "cpu"
 )
 
-# Load pretrained model
+# Load model
 model = torchvision.models.__dict__['resnet18'](weights=None)
-model.fc = torch.nn.Linear(model.fc.in_features, NUM_CLASSES)
+model.fc = torch.nn.Linear(model.fc.in_features, NUM_OUTPUTS)
 model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device(device)))
 model = model.to(device)
 
